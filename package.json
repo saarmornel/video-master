@@ -1,0 +1,52 @@
+{
+  "name": "video-master",
+  "version": "0.1.0",
+  "description": "multi-purpose library for video transcoding and creation of freezed and animated thumbnail",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "scripts": {
+    "start": "tsc && node ./dist/index.js",
+    "test": "tsc && mocha --recursive ./dist/**/*.spec.js --exit",
+    "build": "tsc",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirSaar/video-master.git"
+  },
+  "keywords": [
+    "video",
+    "thumbnail",
+    "animated",
+    "thumbnail",
+    "transcoder",
+    "transcode",
+    "mp4",
+    "gif",
+    "png"
+  ],
+  "author": "Saar Mornel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirSaar/video-master/issues"
+  },
+  "homepage": "https://github.com/SirSaar/video-master#readme",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.8",
+    "@types/chai": "^4.1.3",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/mocha": "^5.2.0",
+    "@types/node": "^10.1.4",
+    "@types/supertest": "^2.0.4",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "standard-version": "^4.4.0",
+    "ts-node": "^6.0.5",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.4"
+  }
+}
