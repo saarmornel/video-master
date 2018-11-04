@@ -1,11 +1,11 @@
 import { config, imageType } from '../config';
 import { Directory } from '../helpers/directory.class';
-import { assertDirectory, tempDirectory } from '../configure';
+import { assertDirectory, videosDirectory } from '../videos.directory';
 import * as ffmpeg from 'fluent-ffmpeg';
 
 export class Thumbnail {
     private static size: string = config.image.size;
-    private static tempDir: Directory = tempDirectory;
+    private static tempDir: Directory = videosDirectory;
 
     public static configure(configutraion : Partial<imageType>) {
         config.animation = { ...config.animation, ...configutraion }

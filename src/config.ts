@@ -1,6 +1,6 @@
 import * as path from 'path';
 export type ConfigType = {
-    tempDirectory: string;
+    videosDirectory: string;
     animation: animationType;
     image: imageType;
     video: videoType;
@@ -23,7 +23,7 @@ export type videoType = {
 }
 
 export const config: ConfigType = {
-    tempDirectory: path.join(process.cwd(),'videos'),
+    videosDirectory: path.join(process.cwd(),'videos'),
     animation: {
         size: '320x180',
         offsetPercent: 0.3,

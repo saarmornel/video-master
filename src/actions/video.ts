@@ -1,13 +1,13 @@
 import { config, videoType } from '../config';
 import { Directory } from '../helpers/directory.class';
-import { assertDirectory, tempDirectory } from '../configure';
+import { assertDirectory, videosDirectory } from '../videos.directory';
 import * as ffmpeg from 'fluent-ffmpeg';
 
 export class Video {
     private static audioCodec: string = config.video.audioCodec;
     private static videoCodec: string = config.video.videoCodec;
     private static format: string = config.video.format;
-    private static tempDir: Directory = tempDirectory;
+    private static tempDir: Directory = videosDirectory;
 
     public static configure(configutraion : Partial<videoType>) {
         config.video = { ...config.video, ...configutraion }

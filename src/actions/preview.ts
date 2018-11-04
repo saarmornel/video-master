@@ -2,7 +2,7 @@ import * as ffmpeg from 'fluent-ffmpeg';
 import { config, animationType } from '../config';
 import { Directory } from '../helpers/directory.class';
 import { Command, stdType } from '../helpers/command.class';
-import { assertDirectory, tempDirectory } from '../configure';
+import { assertDirectory, videosDirectory } from '../videos.directory';
 
 
 export class Preview {
