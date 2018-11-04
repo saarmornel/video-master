@@ -9,7 +9,7 @@ export class Preview {
     private static size: string = config.animation.size;
     private static time: number = config.animation.time;
     private static offsetPercent: number = config.animation.offsetPercent;
-    private static tempDir: Directory = tempDirectory;
+    private static tempDir: Directory = videosDirectory;
 
     public static configure(configutraion : Partial<animationType>) {
         config.animation = { ...config.animation, ...configutraion }
