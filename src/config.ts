@@ -23,7 +23,7 @@ export type videoType = {
 }
 
 export const config: ConfigType = {
-    tempDirectory: `${path.join(path.dirname(process.argv[1]),'..','temp')}`,
+    tempDirectory: path.join(process.cwd(),'videos'),
     animation: {
         size: '320x180',
         offsetPercent: 0.3,

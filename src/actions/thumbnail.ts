@@ -1,23 +1,23 @@
-import * as ffmpeg from 'fluent-ffmpeg';
 import { config, imageType } from '../config';
 import { Directory } from '../helpers/directory.class';
 import { assertDirectory, tempDirectory } from '../configure';
+import * as ffmpeg from 'fluent-ffmpeg';
 
-export class ImageService {
+export class Thumbnail {
     private static size: string = config.image.size;
-    private static tempDir: Directory = Directory.createDirectory(config.tempDirectory);
+    private static tempDir: Directory = tempDirectory;
 
     public static configure(configutraion : Partial<imageType>) {
         config.animation = { ...config.animation, ...configutraion }
     }
 
-    public static async transcode(key: string) {
+    public static async create(key: string) {
         assertDirectory();
-        const sourcePath = ImageService.tempDir.getFilePath(key);
-        await ImageService.process(
+        const sourcePath = Thumbnail.tempDir.getFilePath(key);
+        await Thumbnail.process(
             sourcePath,
             Directory.changeFormat(key,'png'),
-            ImageService.tempDir.dir 
+            Thumbnail.tempDir.dir 
         );
     }
 
@@ -28,7 +28,7 @@ export class ImageService {
                 timestamps: ['50%'],
                 filename: imageName,
                 folder: destDir,
-                size: ImageService.size
+                size: Thumbnail.size
             })
             .on('end', function() {
                 return resolv(imageName);

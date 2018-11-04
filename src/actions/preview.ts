@@ -5,7 +5,7 @@ import { Command, stdType } from '../helpers/command.class';
 import { assertDirectory, tempDirectory } from '../configure';
 
 
-export class AnimationService {
+export class Preview {
     private static size: string = config.animation.size;
     private static time: number = config.animation.time;
     private static offsetPercent: number = config.animation.offsetPercent;
@@ -18,12 +18,12 @@ export class AnimationService {
     public static async transcode(key: string) {
         assertDirectory();
         const [sourcePath, destPath] = [
-            AnimationService.tempDir.getFilePath(key), 
-            AnimationService.tempDir.getFilePath( Directory.changeFormat(key, 'gif') )
+            Preview.tempDir.getFilePath(key), 
+            Preview.tempDir.getFilePath( Directory.changeFormat(key, 'gif') )
         ];
-        const length = await AnimationService.getLength(sourcePath);
-        const offset = AnimationService.getOffset(length)
-        await AnimationService.createAnimation(sourcePath, destPath, offset);
+        const length = await Preview.getLength(sourcePath);
+        const offset = Preview.getOffset(length)
+        await Preview.createPreview(sourcePath, destPath, offset);
     }
     
     private static async getLength(sourcePath: string): Promise<number> {
@@ -33,11 +33,11 @@ export class AnimationService {
     }
 
     private static getOffset(length: number) {
-        return Math.ceil(length)*AnimationService.offsetPercent;
+        return Math.ceil(length)*Preview.offsetPercent;
     }
 
-    private static createAnimation(sourcePath: string, destPath: string, offset: number): Promise<string> {
+    private static createPreview(sourcePath: string, destPath: string, offset: number): Promise<string> {
         return Command
-        .execute(`ffmpeg -i ${sourcePath} -ss ${offset} -t ${AnimationService.time} -vf scale=${AnimationService.size} -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - ${destPath}`);
+        .execute(`ffmpeg -i ${sourcePath} -ss ${offset} -t ${Preview.time} -vf scale=${Preview.size} -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - ${destPath}`);
     }
 }

@@ -1,9 +1,9 @@
-import * as ffmpeg from 'fluent-ffmpeg';
 import { config, videoType } from '../config';
 import { Directory } from '../helpers/directory.class';
 import { assertDirectory, tempDirectory } from '../configure';
+import * as ffmpeg from 'fluent-ffmpeg';
 
-export class VideoService {
+export class Video {
     private static audioCodec: string = config.video.audioCodec;
     private static videoCodec: string = config.video.videoCodec;
     private static format: string = config.video.format;
@@ -17,10 +17,10 @@ export class VideoService {
         assertDirectory();
         if(Directory.getFormat(key) === 'mp4') return;
         const sourcePath = this.tempDir.getFilePath(key);
-        await VideoService.process(
+        await Video.process(
             key,
             sourcePath,
-            VideoService.tempDir.getFilePath( Directory.changeFormat(key, this.format) )
+            Video.tempDir.getFilePath( Directory.changeFormat(key, this.format) )
         );
     }
 
