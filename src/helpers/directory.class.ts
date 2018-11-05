@@ -28,11 +28,11 @@ export class Directory {
         return fileName.replace(path.extname(fileName),'.'+format);
     }
 
-    public static getFormat(fileName: string): string {
+    public getFormat(fileName: string): string {
         return path.extname(fileName).slice(1);
     }
 
-    public static getNameWithoutFormat(fileName: string): string {
+    public getNameWithoutFormat(fileName: string): string {
         return fileName.split('.')[0];
     }
 
@@ -52,12 +52,12 @@ export class Directory {
         return Command.execute(`cp ${filePath} ${this._dir}`);
     }
 
-    public static checkPathExist(path: string) {
+    public checkPathExist(path: string) {
         return util.promisify(fs.access)(path);
     }
 
     public async checkFileExist(fileName: string) {
-        return Directory.checkPathExist(this.getFilePath(fileName));
+        return this.checkPathExist(this.getFilePath(fileName));
     }
 
 
