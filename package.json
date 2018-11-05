@@ -7,7 +7,7 @@
   "scripts": {
     "start": "tsc && node ./dist/index.js",
     "test": "tsc && mocha --recursive ./dist/**/*.spec.js --exit",
-    "install": ". ./install-script.sh",
+    "pre:install": ". ./install-script.sh",
     "build": "tsc",
     "release": "standard-version"
   },
