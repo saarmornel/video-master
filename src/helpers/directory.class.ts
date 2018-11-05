@@ -28,12 +28,24 @@ export class Directory {
         return fileName.replace(path.extname(fileName),'.'+format);
     }
 
-    public getFormat(fileName: string): string {
+    public changeFormat(fileName: string,format: string) {
+        return Directory.changeFormat(fileName, format);
+    }
+
+    public static getFormat(fileName: string): string {
         return path.extname(fileName).slice(1);
     }
 
-    public getNameWithoutFormat(fileName: string): string {
+    public getFormat(fileName: string) {
+        return Directory.getFormat(fileName);
+    }
+
+    public static getNameWithoutFormat(fileName: string): string {
         return fileName.split('.')[0];
+    }
+
+    public getNameWithoutFormat(fileName: string): string {
+        return Directory.getNameWithoutFormat(fileName);
     }
 
     public drop(): Promise<string> {
@@ -52,12 +64,16 @@ export class Directory {
         return Command.execute(`cp ${filePath} ${this._dir}`);
     }
 
-    public checkPathExist(path: string) {
+    public static checkPathExist(path: string) {
         return util.promisify(fs.access)(path);
     }
 
+    public checkPathExist(path: string) {
+        return Directory.checkPathExist(path);
+    }
+
     public async checkFileExist(fileName: string) {
-        return this.checkPathExist(this.getFilePath(fileName));
+        return Directory.checkPathExist(this.getFilePath(fileName));
     }
 
 
