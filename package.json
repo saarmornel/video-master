@@ -1,6 +1,6 @@
 {
   "name": "video-master",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "multi-purpose library for video transcoding and creation of freezed and animated thumbnail",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
