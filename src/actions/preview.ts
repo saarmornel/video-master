@@ -15,7 +15,7 @@ export class Preview {
         config.animation = { ...config.animation, ...configutraion }
     }
 
-    public static async transcode(key: string) {
+    public static async create(key: string) {
         assertDirectory();
         const [sourcePath, destPath] = [
             Preview.tempDir.getFilePath(key), 
